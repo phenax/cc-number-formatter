@@ -1,0 +1,23 @@
+{
+  "name": "card-number-formatter",
+  "version": "0.0.0",
+  "description": "A library that allows you to format credit and debit card numbers",
+  "main": "build/${x}.js",
+  "repository": "https://github.com/${x}",
+  "author": "Akshay Nair <phenax5@gmail.com>",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c --watch",
+    "test": "jest"
+  },
+  "license": "Apache 2.0",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "jest": "^22.4.3",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-node-resolve": "^3.3.0"
+  },
+  "dependencies": {}
+}

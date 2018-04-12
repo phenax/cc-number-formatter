@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pattern lock for the web</title>
+	<meta charset="utf-8" />
+	<meta name='viewport' content='width=device-width,initial-scale=1.0' />
+	<style>
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html, body {
+			margin: 0;
+			padding: 0;
+			background-color: #fff;
+			color: #2c3e50;
+			font-family: Helvetica, "sans-serif";
+		}
+
+		.pattern-container {
+			text-align: center;
+			max-width: 500px;
+			margin: 0 auto;
+			padding: 1em;
+		}
+
+		.title {
+			font-size: 1.6em;
+			text-align: left;
+			padding: 1em 0 0;
+		}
+
+		.subtitle {
+			font-size: 1.1em;
+			opacity: .8;
+			text-align: left;
+		}
+
+		.password {
+			padding: 1em 0;
+		}
+
+	</style>
+</head>
+<body>
+
+
+<div class='pattern-container'>
+
+	<div class='title'>PatternLockJS</div>
+	<div class='subtitle'>Draw unlock pattern to generate a hash</div>
+
+	<br />
+
+	<canvas id='patternLock'></canvas>
+	<div class='password'>
+		Your password is: <input class='js-password' type='text' />
+	</div>
+
+</div>
+
+<script src='./build/example.js'></script>
+</body>
+</html>
