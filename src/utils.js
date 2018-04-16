@@ -1,9 +1,12 @@
-import * as R from 'ramda/src/merge';
-const merge = R.default;
 
 import { FULL_WIDTH_CHARS, HALF_WIDTH_CHARS } from './constants';
 import { Container, Either } from './fns';
 
+const merge = (...objs) => objs.reduce((carry, obj) => {
+  Object.keys(obj)
+    .forEach(key => carry[key] = obj[key]);
+  return carry;
+}, {});
 
 const FW_TO_HW_MAP = FULL_WIDTH_CHARS.split('').reduce(
   (carry, char, index) => merge(carry, {
