@@ -3,18 +3,30 @@ Formats the card number
 
 ## Getting Started
 
-
 ### Installing
 
 Install this library as a dependency in your project
 
 ```
-yarn add ${x}
+yarn add @phenax/cc-number-formatter
 ```
 OR
 ```
-npm i ${x} --save
+npm i @phenax/cc-number-formatter --save
 ```
+
+### Usage
+
+Import format function into your project
+```js
+// formatCardNumber :: String -> String
+import { formatCardNumber } from '@phenax/cc-number-formatter';
+```
+
+```js
+const formattedNumber = formatCardNumber('4111111111111111'); // 4111 1111 1111 1111
+```
+
 
 ## Running the tests
 
@@ -22,18 +34,9 @@ npm i ${x} --save
 * Run `yarn test`
 
 
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
 ## License
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* Extracted a few pieces out of [https://github.com/faaez/creditcardutils](CreditCardUtils)
