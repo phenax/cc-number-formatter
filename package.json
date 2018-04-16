@@ -1,6 +1,6 @@
 {
   "name": "@phenax/cc-number-formatter",
-  "version": "0.0.1-test.5",
+  "version": "0.0.1-test.6",
   "description": "A library that allows you to format credit and debit card numbers",
   "main": "build/card-formatter.js",
   "repository": "https://github.com/phenax/cc-number-formatter",
@@ -8,7 +8,7 @@
   "scripts": {
     "build": "rollup -c",
     "prepublish": "rollup -c",
-    "postinstall": "npm install && rollup -c",
+    "postinstall": "rollup -c",
     "watch": "rollup -c --watch",
     "test": "jest"
   },
