@@ -5,8 +5,7 @@
           [
             "env", {
               "targets": {
-                "browsers": ["last 2 versions", "safari >= 7"],
-                "node": "current"
+                "browsers": ["last 2 versions", "safari >= 7"]
               }
             }
           ]
@@ -17,8 +16,7 @@
       [
         "env", {
           "targets": {
-            "browsers": ["last 2 versions", "safari >= 7"],
-            "node": "current"
+            "browsers": ["last 10 versions", "ie >= 8"]
           },
           "modules": false,
           "useBuiltIns": false
