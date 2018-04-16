@@ -41,40 +41,6 @@
     validLengths: [16]
   }];
 
-  var _assign = /*#__PURE__*/require('./internal/_assign');
-
-  var _curry2 = /*#__PURE__*/require('./internal/_curry2');
-
-  /**
-   * Create a new object with the own properties of the first object merged with
-   * the own properties of the second object. If a key exists in both objects,
-   * the value from the second object will be used.
-   *
-   * @func
-   * @memberOf R
-   * @since v0.1.0
-   * @category Object
-   * @sig {k: v} -> {k: v} -> {k: v}
-   * @param {Object} l
-   * @param {Object} r
-   * @return {Object}
-   * @see R.mergeDeepRight, R.mergeWith, R.mergeWithKey
-   * @example
-   *
-   *      R.merge({ 'name': 'fred', 'age': 10 }, { 'age': 40 });
-   *      //=> { 'name': 'fred', 'age': 40 }
-   *
-   *      var resetToDefault = R.merge(R.__, {x: 0});
-   *      resetToDefault({x: 5, y: 2}); //=> {x: 0, y: 2}
-   * @symb R.merge({ x: 1, y: 2 }, { y: 5, z: 3 }) = { x: 1, y: 5, z: 3 }
-   */
-
-
-  var merge = /*#__PURE__*/_curry2(function merge(l, r) {
-    return _assign({}, l, r);
-  });
-  module.exports = merge;
-
   var Container = function Container(x) {
       return {
           map: function map(f) {
@@ -86,8 +52,13 @@
       };
   };
 
+  // export const Maybe = x => ({
+  //     map: f => Maybe(isEmpty(x)? x: f(x)),
+  //     fold: f => isEmpty(x)? x: f(x),
+  // });
+
   var Either = function Either(x) {
-      return x ? Either.Right(x) : Either.Left(x);
+      return !!x ? Either.Right(x) : Either.Left(x);
   };
 
   Either.Left = function (x) {
@@ -115,10 +86,22 @@
   function _toArray(arr) { return Array.isArray(arr) ? arr : Array.from(arr); }
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-  var merge$1 = undefined;
+
+  var merge = function merge() {
+    for (var _len = arguments.length, objs = Array(_len), _key = 0; _key < _len; _key++) {
+      objs[_key] = arguments[_key];
+    }
+
+    return objs.reduce(function (carry, obj) {
+      Object.keys(obj).forEach(function (key) {
+        return carry[key] = obj[key];
+      });
+      return carry;
+    }, {});
+  };
 
   var FW_TO_HW_MAP = FULL_WIDTH_CHARS.split('').reduce(function (carry, char, index) {
-    return merge$1(carry, _defineProperty({}, char, HALF_WIDTH_CHARS[index] || ''));
+    return merge(carry, _defineProperty({}, char, HALF_WIDTH_CHARS[index] || ''));
   }, {});
 
   var compact = function compact(arr) {
