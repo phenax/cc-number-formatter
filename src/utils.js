@@ -1,27 +1,22 @@
-import { FW_TO_HW_MAP } from './constants';
+import * as R from 'ramda/src/merge';
+const merge = R.default;
 
-export const Container = x => ({
-  map: f => Container(f(x)),
-  fold: f => f(x),
-});
+import { FULL_WIDTH_CHARS, HALF_WIDTH_CHARS } from './constants';
+import { Container, Either } from './fns';
 
-export const Either = x => (x ? Either.Right(x) : Either.Left(x));
 
-Either.Left = x => ({
-  // map: _ => Either.Left(x),
-  fold: (f, _) => f(x),
-});
-Either.Right = x => ({
-  // map: f => Either.Right(f(x)),
-  fold: (_, f) => f(x),
-});
+const FW_TO_HW_MAP = FULL_WIDTH_CHARS.split('').reduce(
+  (carry, char, index) => merge(carry, {
+    [char]: HALF_WIDTH_CHARS[index] || '',
+  }), {});
 
-export const removeEmpty = arr => arr.filter(Boolean);
-export const tail = ([_, ...arr]) => arr;
-export const first = ([firstEl]) => firstEl;
+
+export const compact = arr => arr.filter(Boolean);
 export const join = glue => arr => arr.join(glue);
 export const split = seperator => str => str.split(seperator);
-export const getMaximum = arr => Math.max(...arr);
+export const head = ([ head ]) => head;
+export const tail = ([ _, ...tail ]) => tail;
+export const max = arr => Math.max(...arr);
 
 export const sliceString = str => max => str.slice(0, max);
 export const getHalfWidthChar = char => FW_TO_HW_MAP[char] || char;
@@ -33,7 +28,7 @@ export const getRegexMatches = formatRegex => cardNum =>
       Container(cardNum)
         .map(num => formatRegex.exec(num) || [])
         .map(tail)
-        .fold(removeEmpty),
+        .fold(compact),
     () => cardNum.match(formatRegex) || [],
   );
 
@@ -45,5 +40,5 @@ export const replaceFullWidthChars = str =>
 
 export const sliceCardNumber = validLengths => cardNum =>
   Container(validLengths)
-    .map(getMaximum)
+    .map(max)
     .fold(sliceString(cardNum));

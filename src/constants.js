@@ -3,11 +3,6 @@ export const DEFAULT_FORMAT_REGEX = /(\d{1,4})/g;
 export const FULL_WIDTH_CHARS = '０１２３４５６７８９';
 export const HALF_WIDTH_CHARS = '0123456789';
 
-export const FW_TO_HW_MAP = FULL_WIDTH_CHARS.split('').reduce(
-  (carry, char, index) => Object.assign(carry, {
-    [char]: HALF_WIDTH_CHARS[index] || '',
-  }), {});
-
 export const CARD_TYPES = [
   {
     type: 'maestro',
