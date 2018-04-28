@@ -1,4 +1,6 @@
 # Card number Formatter
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/phenax/cc-number-formatter.svg)](https://greenkeeper.io/)
 Formats the card number
 
 ## Getting Started
